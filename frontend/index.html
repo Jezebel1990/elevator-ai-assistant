@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elevator AI — Enviar Texto</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <span class="logo">🛗</span>
+      <h1>Elevator AI</h1>
+      <p class="subtitle">Cole um texto e faça perguntas sobre ele</p>
+    </div>
+
+    <div class="card">
+      <label for="text">📄 Texto de referência</label>
+      <textarea
+        id="text"
+        rows="14"
+        placeholder="Cole aqui o texto que deseja analisar...&#10;&#10;Pode ser um e-mail, artigo, contrato, relatório, etc."
+      ></textarea>
+      <div class="char-count">
+        <span id="charCount">0</span> caracteres
+      </div>
+
+      <button id="sendBtn" onclick="sendText()">
+        <span class="btn-icon">📤</span> Enviar texto para IA
+      </button>
+
+      <div id="status" class="status hidden"></div>
+    </div>
+
+    <a href="./ask.html" class="link-btn">
+      Ir para perguntas →
+    </a>
+  </div>
+
+  <script src="./script.js"></script>
+  <script>
+    // Restaura texto salvo anteriormente (localStorage do navegador)
+    const saved = localStorage.getItem("elevatorText");
+    if (saved) {
+      document.getElementById("text").value = saved;
+      updateCharCount();
+    }
+
+    document.getElementById("text").addEventListener("input", () => {
+      localStorage.setItem("elevatorText", document.getElementById("text").value);
+      updateCharCount();
+    });
+
+    function updateCharCount() {
+      const len = document.getElementById("text").value.length;
+      document.getElementById("charCount").textContent = len.toLocaleString("pt-BR");
+    }
+  </script>
+</body>
+</html>

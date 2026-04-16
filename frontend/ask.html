@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elevator AI — Perguntas</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <span class="logo">🛗</span>
+      <h1>Elevator AI</h1>
+      <p class="subtitle">Faça perguntas sobre o texto enviado</p>
+    </div>
+
+    <div class="card">
+      <label for="question">💬 Sua pergunta</label>
+      <div class="input-row">
+        <input
+          type="text"
+          id="question"
+          placeholder="O que você quer saber sobre o texto?"
+          onkeydown="if(event.key==='Enter') ask()"
+          autocomplete="off"
+        >
+        <button id="askBtn" onclick="ask()">
+          Perguntar
+        </button>
+      </div>
+
+      <div id="loadingBox" class="loading-box hidden">
+        <div class="spinner"></div>
+        <span>Consultando a IA...</span>
+      </div>
+
+      <div id="answerBox" class="answer-box hidden">
+        <div class="answer-header">
+          <span>🤖 Resposta</span>
+          <button class="copy-btn" onclick="copyAnswer()" title="Copiar resposta">📋</button>
+        </div>
+        <p id="answer"></p>
+      </div>
+
+      <div id="errorBox" class="error-box hidden">
+        <span>❌</span> <span id="errorMsg"></span>
+      </div>
+    </div>
+
+    <button onclick="goBack()" class="link-btn back">
+      ← Voltar e alterar texto
+    </button>
+  </div>
+
+  <script src="./script.js"></script>
+  <script>
+    function copyAnswer() {
+      const text = document.getElementById("answer").innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector(".copy-btn");
+        btn.textContent = "✅";
+        setTimeout(() => btn.textContent = "📋", 2000);
+      });
+    }
+  </script>
+</body>
+</html>

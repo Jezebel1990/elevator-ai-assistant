@@ -1,0 +1,276 @@
+/* ── Reset & Base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 30px 16px;
+}
+
+/* ── Container ── */
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Header ── */
+.header {
+  text-align: center;
+  color: white;
+  padding: 10px 0 4px;
+}
+
+.logo {
+  font-size: 2.5rem;
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.header .subtitle {
+  margin-top: 6px;
+  opacity: 0.85;
+  font-size: 0.95rem;
+}
+
+/* ── Card ── */
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+/* ── Inputs ── */
+textarea, input[type="text"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #d0d7de;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color 0.2s;
+  resize: vertical;
+  color: #222;
+  background: #fafafa;
+}
+
+textarea:focus, input[type="text"]:focus {
+  outline: none;
+  border-color: #667eea;
+  background: white;
+}
+
+.char-count {
+  font-size: 0.8rem;
+  color: #888;
+  text-align: right;
+  margin-top: -6px;
+}
+
+/* ── Buttons ── */
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  transition: background 0.2s, opacity 0.2s, transform 0.1s;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+#sendBtn {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  width: 100%;
+}
+
+#sendBtn:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+/* Input row para ask.html */
+.input-row {
+  display: flex;
+  gap: 10px;
+}
+
+.input-row input {
+  flex: 1;
+}
+
+#askBtn {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+#askBtn:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+/* ── Status / Error / Answer ── */
+.status {
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.status.success {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.status.error {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.answer-box {
+  background: #f8f9ff;
+  border: 1.5px solid #dde1ff;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.answer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.copy-btn {
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 13px;
+  cursor: pointer;
+  color: #555;
+}
+
+.copy-btn:hover {
+  background: #eee;
+}
+
+#answer {
+  color: #1a1a2e;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  white-space: pre-wrap;
+}
+
+.error-box {
+  background: #fef2f2;
+  border: 1.5px solid #fecaca;
+  border-radius: 10px;
+  padding: 14px;
+  color: #991b1b;
+  font-size: 0.9rem;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+/* ── Loading Spinner ── */
+.loading-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #667eea;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 10px 0;
+}
+
+.spinner {
+  width: 22px;
+  height: 22px;
+  border: 3px solid #dde1ff;
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Link / Back buttons ── */
+.link-btn {
+  display: block;
+  text-align: center;
+  padding: 14px;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1.5px solid rgba(255,255,255,0.35);
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.link-btn:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+.link-btn.back {
+  font-size: 0.9rem;
+}
+
+/* ── Hidden ── */
+.hidden {
+  display: none !important;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .input-row {
+    flex-direction: column;
+  }
+
+  #askBtn {
+    width: 100%;
+  }
+}
